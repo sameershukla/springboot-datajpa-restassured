@@ -1,10 +1,8 @@
 package com.example.controller;
 
-import java.util.List;
-
 import org.springframework.hateoas.ResourceSupport;
 
-import com.example.model.Phone;
+import com.example.model.Passport;
 
 /**
  * 
@@ -16,16 +14,8 @@ public class PersonResource extends ResourceSupport {
 
 	private String name;
 
-	private List<Phone> phone;
-
-	public List<Phone> getPhone() {
-		return phone;
-	}
-
-	public void setPhone(List<Phone> phone) {
-		this.phone = phone;
-	}
-
+	private Passport passport;
+	
 	public String getName() {
 		return name;
 	}
@@ -34,4 +24,13 @@ public class PersonResource extends ResourceSupport {
 		this.name = name;
 	}
 
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
+	
 }

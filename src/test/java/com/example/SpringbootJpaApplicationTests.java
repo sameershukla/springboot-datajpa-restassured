@@ -3,9 +3,6 @@ package com.example;
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,10 +14,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.example.model.Passport;
 import com.example.model.Person;
-import com.example.model.Phone;
 import com.example.repository.PersonRepository;
-import com.example.repository.PhoneRepository;
 import com.jayway.restassured.RestAssured;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,26 +28,19 @@ public class SpringbootJpaApplicationTests {
 	@Autowired
 	private PersonRepository personRepository;
 
-	@Autowired
-	private PhoneRepository phoneRepository;
-
 	@Value("${local.server.port}")
 	private int serverPort;
 
 	@Before
 	public void setUp() {
 		RestAssured.port = serverPort;
-		Phone one = new Phone("8806491795", "+91");
-		Phone two = new Phone("8806492183", "+91");
-		List<Phone> phones = Arrays.asList(one, two);
+		Passport passport = new Passport();
+		passport.setCountry("India");
+		passport.setNumber("YDY30303");
 		Person person = new Person();
 		person.setName("Sameer Shukla");
-		person.setPhones(phones);
+		person.setPassport(passport);
 		personRepository.save(person);
-		one.setPerson(person);
-		two.setPerson(person);
-		phoneRepository.save(one);
-		phoneRepository.save(two);
 	}
 
 	/**

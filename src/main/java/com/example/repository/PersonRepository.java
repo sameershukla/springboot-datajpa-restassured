@@ -1,11 +1,9 @@
 package com.example.repository;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 
+import com.example.model.Passport;
 import com.example.model.Person;
-import com.example.model.Phone;
 
 /**
  * 
@@ -15,6 +13,6 @@ import com.example.model.Phone;
  */
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
-	public List<Phone> findByName(String name);
+	public Passport findByName(String name);
 
 }

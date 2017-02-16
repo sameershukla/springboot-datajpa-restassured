@@ -46,15 +46,14 @@ public class PersonController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/persons", method = RequestMethod.GET)
+	@RequestMapping(value = "/person", method = RequestMethod.GET)
 	public List<PersonResource> persons() throws Exception {
 		Iterable<? extends Person> persons = this.personRepository.findAll();
 		List<PersonResource> resources = new ArrayList<PersonResource>();
 		for (Person person : persons) {
 			PersonResource resource = new PersonResource();
 			resource.setName(person.getName());
-			// Now phones will be fetched as I queried.
-			resource.setPhone(person.getPhones());
+			resource.setPassport(person.getPassport());
 			Link detail = linkTo(PersonController.class).slash(person.getId()).withSelfRel();
 			resource.add(detail);
 			resources.add(resource);
@@ -78,7 +77,7 @@ public class PersonController {
 		} else {
 			resource = new PersonResource();
 			resource.setName(person.getName());
-			resource.setPhone(person.getPhones());
+			resource.setPassport(person.getPassport());
 			Link detail = linkTo(PersonController.class).slash(person.getId()).withSelfRel();
 			resource.add(detail);
 		}
