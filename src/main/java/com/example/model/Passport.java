@@ -1,5 +1,6 @@
 package com.example.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ public class Passport {
 
     private String country;
 
+    @Column(name = "number", updatable = false, unique = true, nullable = false)
     private String number;
 
     @OneToOne(fetch = FetchType.LAZY)

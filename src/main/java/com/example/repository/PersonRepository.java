@@ -2,7 +2,6 @@ package com.example.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.model.Passport;
 import com.example.model.Person;
 
 /**
@@ -13,6 +12,6 @@ import com.example.model.Person;
  */
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
-	public Passport findByName(String name);
+    public Person findByName(String name);
 
 }
