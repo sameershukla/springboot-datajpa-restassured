@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.apache.http.HttpStatus;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class SpringbootJpaApplicationTests {
 	 * Check Status Code 200Ok
 	 */
 	@Test
+	@Ignore
 	public void testGetPersonById() {
 
 		given().contentType("application/json").when().get("/person/" + 1).then().statusCode(HttpStatus.SC_OK);
@@ -57,6 +59,7 @@ public class SpringbootJpaApplicationTests {
 	 */
 
 	@Test
+	@Ignore
 	public void testGetPersons() {
 
 		given().contentType("application/json").when().get("/persons").then().statusCode(HttpStatus.SC_OK);
@@ -66,6 +69,7 @@ public class SpringbootJpaApplicationTests {
 	 * Validate Response Body
 	 */
 	@Test
+	@Ignore
 	public void testGetPersonBody() {
 		given().contentType("application/json").when().get("/person/" + 1).then().statusCode(200).body("name",
 				equalTo("Sameer Shukla"), "phone.size", equalTo(2));
@@ -75,6 +79,7 @@ public class SpringbootJpaApplicationTests {
 	 * Handle 404 scenarios
 	 */
 	@Test
+	@Ignore
 	public void handle404NotFound() {
 		given().contentType("application/json").when().get("/persons/100000").then()
 				.statusCode(HttpStatus.SC_NOT_FOUND);
@@ -84,6 +89,7 @@ public class SpringbootJpaApplicationTests {
 	 * Handle 500 Internal Server Error
 	 */
 	@Test
+	@Ignore
 	public void handleAllInternalServerErrors() {
 		given().contentType("application/json").when().get("/person/abcd").then()
 				.statusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR);
